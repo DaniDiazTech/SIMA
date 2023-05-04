@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+
+{% block body %}
+{% comment %} Definitions {% endcomment %}
+{% now "d" as day %}
+{% now "l" as day_name %}
+{% now "F" as month %}
+<div class="my-3 center text-center">
+    <h1 class="">Hoy es {{day_name | capfirst}} {{day}} de {{month | capfirst}}</h1>
+</div>
+<div class="">
+    <h4>
+        Hola {{user.username}}, estos son tus habitos {{daily}}
+    </h4>
+</div>
+<div class="center">
+    <ul class="list-group">
+        {% for habit, daily in habits %}
+            <li class="list-group-item">
+                <h4>
+                <a href="{% url 'habits:calendar' habit.pk %}">{{habit.name}}</a>
+                </h4>
+                <p>
+                <button type="button" class="btn btn-primary" style="background-color: #457B9D;"><a href="{% url 'habits:update' habit.pk %}" class="link-success">Editar</a></button>
+                <button type="button" class="btn" style=" border-radius: 5px; color: aliceblue; background-color: #E63946;"><a href="{% url 'habits:delete' habit.pk %}" class="link-danger" >Eliminar</a></button>
+                </p>
+                <form name="formCheckbox" action="" method="POST" id="formCheckbox{{forloop.counter}}">
+                    {% csrf_token %}
+                    <input type="hidden" name="daily" value="{{habit.pk}}"/>
+                    <input type="checkbox" class="form-check"  id="checkBox" {% if daily%}checked{% endif %} onchange="document.getElementById('formCheckbox{{forloop.counter}}').submit()">
+                </form>
+            </li>
+        {% empty %}
+            <li class="list-group-item">
+                <p>Lo sentimos, no tienes habitos. <a href="{% url 'habits:create' %}" class="link" style="color: Blue;">Crea uno!</a></p>
+            </li>   
+        {% endfor %}
+        
+    </ul>
+</div>
+<style type="text/css">
+    .list-group-item{
+        padding: 1rem 3rem;
+        border: solid 2px #1d3557;
+        margin: 0.1rem 0rem;
+    }
+    h4 a {
+        color: #1d3557;
+    }
+    h4 a:hover {
+        color: #457b9d;
+    }
+    a {
+        color: white;
+    }
+    a:hover {
+        color: #c7cee7
+    }
+    .list-group-item form {
+        float: right;
+        margin-right: 5%;
+        margin-top: -5%;
+    }
+    
+</style>
+
+{% endblock body %}
+

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}{{habit.name | capfirst}} Calendar {% endblock title %}
+
+{% block body %}
+<div class="text-center center" style="background-color: white;">
+    <h1>{{habit.name}}</h1>
+    <p class="my-2">{{habit.description}}</p>
+    <div class="my-4 ">
+        <div id="calendar" class="text-capitalize" style="margin-left: 10px; margin-right: 10px; margin-bottom: 10px;"></div>
+    </div>
+</div>
+
+{% endblock body %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var calendarUI = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarUI,{
+            events: [
+                {% for day in days %}
+                {
+                    title: 'Hecho este dia',
+                    start: '{{ day.date | date:"Y-m-d"}}',
+                    end: '{{ day.date | date:"Y-m-d" }}',
+                },
+                {% endfor %} 
+            ],
+            locale: 'es',
+        });
+        calendar.render();
+    });
+</script>
+{% endblock scripts %}

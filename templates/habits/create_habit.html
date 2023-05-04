@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Crear Habito{% endblock title %}
+
+{% block body %}
+<div  
+style="border: solid; border-radius: 10px; width: 100%; height: unset; margin-top: 10px; background-color: #f3f3f3;">
+        <h1 style="text-align: center;margin-left: 10px;"> Crea tu hábito!!! </h1>
+        <form action="#" method="post" style="text-align: start; width: 70%;margin-left: 25%;">
+            {% csrf_token %}
+            
+            <label>Nombre del Hábito:</label><br>
+            <input 
+            placeholder="Ingrese el nombre del habito, minimo de 3 caracteres" 
+            minlength="3" 
+            type="text" 
+            id="fname" 
+            name="name" 
+            style="min-width: 100; width: inherit; background-color: #eef9fa;">
+            <br>
+            <br>
+            
+            <label>En que consiste el hábito:</label><br>
+            <textarea 
+            id="Descripcion" 
+            name="description"
+            placeholder="Ingrese la descripción del habito, minimo de 3 caracteres" 
+            minlength="3" 
+            type="text" 
+            id="Descripcion" 
+            style="  width: inherit; height: 100px;display: inline; vertical-align:  top; background-color: #eef9fa;" 
+            ></textarea>
+            
+            <br>
+            <br>
+            
+            <button class="btn" 
+            type="submit" 
+            style=" color: white; background-color: #457B9D;">Crear</button>
+            <a class="btn" href="{% url 'habits:home' %}" 
+        style=" border-radius: 5px; color: aliceblue; background-color: #1D3557;" > Cancelar </a>
+            <br>
+            <br>
+        </form>
+    </div>
+{% endblock body %}

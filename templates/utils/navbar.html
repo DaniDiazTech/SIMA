@@ -1,0 +1,67 @@
+<nav class=" mb-4 navbar navbar-dark navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'habits:home' %}">Home</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+          <a
+            aria-current="page"
+            href="{% url 'habits:create' %}"
+            >Crear Habito</a
+          >
+
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="{% url 'habits:create' %}"
+            >Crear Habito</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    {% comment %} Sign in {% endcomment %}
+    
+    {% if user.is_authenticated %}
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" 
+        type="button" id="dropdownMenuButton" 
+        data-toggle="dropdown" 
+        aria-haspopup="true" 
+        aria-expanded="false">
+
+          Hola {{user.username}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 4px">
+          <a class="dropdown-item" href="{%url 'accounts:logout' %}" >Salir</a>
+        </div>
+      </div>
+
+    {% else %}
+    <a class="btn btn-danger" href="{% url 'accounts:login' %}">Entra</a>
+    {% endif %}
+  </div>
+  <style type="text/css">
+    .navbar {
+      background: rgb(80,111,120);
+      background: linear-gradient(180deg, rgba(80,111,120,1) 85%, rgba(159,219,236,1) 100%);
+    }
+    body > nav > div > p {
+      padding: 0rem 1rem;
+    }
+    body > nav > div > a:nth-child(5){
+      padding: 0rem 1rem;
+      margin-top: -1.3%;
+    }
+  </style>
+</nav>

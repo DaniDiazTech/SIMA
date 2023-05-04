@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar {{habit.name}}{% endblock title %}
+
+{% block body %}
+<div  
+style="border: solid; border-radius: 10px; width: 100%; height: unset; margin-top: 10px; background-color: #f3f3f3;">
+    <h1 style="text-align: center;margin-left: 10px;">Eliminar {{habit.name}}</h1>
+    <br>
+    <p style="text-align: start; width: 70%; margin-left: 25%;">¿Estas seguro de eliminar tu hábito <b>{{habit.name}}</b>? Esta acción no se puede reversar.</p>
+    <br>
+    <form action="" method="post" style="text-align: center; width: 100%; ">
+        {% csrf_token %}
+        <a class="btn" href="{% url 'habits:home' %}" 
+        style=" border-radius: 5px; color: aliceblue; background-color: #1D3557;" > Cancelar </a>
+        <button type="submit" class="btn" style="background-color: #E63946; color: white;">Eliminar</button>
+    </form>
+    <br>
+    <br>
+
+</div>
+{% endblock body %}

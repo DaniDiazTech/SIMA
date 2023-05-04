@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block navbar %}{% endblock navbar %}
+
+{% block title %}Registrate{% endblock title %}
+
+{% block body %}
+<div class="text-center center">
+    <h1>Crea una cuenta</h1>
+    {% if form.errors %}
+    <p>Por favor, intenta de nuevo</p>
+    {% endif %}
+    <form action="#" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <div class="my-3">
+            <button class="btn" type="submit" style="background-color: #457B9D; color: white;">Registrarse</button>
+        </div>
+    </form>
+        <p>Ya estas registrado? Solo <a href="{% url 'accounts:login' %}" class="link link-danger" >Ingresa</a></p>
+
+</div>
+<style type="text/css">
+    .container{
+        padding: 5rem 0rem;
+    }
+    .text-center.center{
+        border: solid;
+        border-radius: 10px;
+    }
+    .text-center.center h1{
+        padding: 1rem 1rem;
+    }
+    .text-center.center form{
+        padding: 2rem;
+    }
+    .text-center.center form p label{
+        font-weight: 500;
+    }
+    .text-center.center form p input{
+        border: solid 2px;
+        border-radius: 20px;
+    }
+</style>
+{% endblock body %}
