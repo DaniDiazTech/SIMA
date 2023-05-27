@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Reload browser for frontend dev
     'django_browser_reload',
+
+    'django_extensions',
+    'goals',
     'accounts', 
     'habit',
 ]

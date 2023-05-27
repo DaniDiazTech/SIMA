@@ -12,8 +12,8 @@ Create habit:
 
 To clone and run the project:
 ```bash
-git clone git@github.com:DaniDiazTech/Habit-tracker.git
-cd Habit-tracker
+git clone git@github.com:DaniDiazTech/SIMA.git
+cd SIMA
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
