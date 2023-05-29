@@ -9,8 +9,25 @@
 
 {% block body %}
 <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+<div id="leaves">
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+</div>
 <img class="bg" src="{% static "bambooBackground.png" %}">
-<div class="container">
+<div class="containerl">
     <div class="img">
         <img src={% static "panda.png" %} alt="Panda bg">
     </div>
@@ -25,7 +42,9 @@
                 </div>
                 <div class="div">
                     <h5>Usuario</h5>
-                    <input class="input" type="text">
+                    <input type="text" name="username" autocapitalize="none"
+                    autocomplete="off" maxlength="70" required="" id="id_username"
+                    class="input">
                 </div>
             </div>
             <div class="input-div two">
@@ -34,7 +53,8 @@
                 </div>
                 <div class="div">
                     <h5>Contraseña</h5>
-                    <input class="input" type="password">
+                    <input class="input" type="password" name="password" autocomplete="off" required="" 
+                    id="id_password">
                 </div>
             </div>
             {% if form.errors %}
@@ -49,4 +69,6 @@
         </form>
     </div>
 </div>
+
+<script type="text/javascript" src={% static "main.js" %}></script>
 {% endblock body %}
