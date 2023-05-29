@@ -4,41 +4,22 @@
 {% block title %}Registrate{% endblock title %}
 
 {% block body %}
-<div class="text-center center">
-    <h1>Crea una cuenta</h1>
-    {% if form.errors %}
-    <p>Por favor, intenta de nuevo</p>
-    {% endif %}
-    <form action="#" method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <div class="my-3">
-            <button class="btn" type="submit" style="background-color: #457B9D; color: white;">Registrarse</button>
-        </div>
-    </form>
-        <p>Ya estas registrado? Solo <a href="{% url 'accounts:login' %}" class="link link-danger" >Ingresa</a></p>
-
+<div class="container text-center center mx-auto ">
+    <div class="container mx-auto px-5">
+        <h1 class="my-5 text-uppercase">Crea una cuenta</h1>
+        <form action="#" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <div class="my-3">
+                <button class="btn" type="submit" style="background-color: #457B9D; color: white;">Registrarse</button>
+            </div>
+        </form>
+        {% if form.errors %}
+        <p>Por favor, intenta de nuevo</p>
+        {% endif %}
+    <p class="text-center">Ya estas registrado? Solo <a href="{% url 'accounts:login' %}" class="link link-danger mx-auto px-auto" style="color:black; text-align:center; font-size:125%;"> 
+        <span class="text-center">Ingresa</span> </a></p>
+    </div>
 </div>
-<style type="text/css">
-    .container{
-        padding: 5rem 0rem;
-    }
-    .text-center.center{
-        border: solid;
-        border-radius: 10px;
-    }
-    .text-center.center h1{
-        padding: 1rem 1rem;
-    }
-    .text-center.center form{
-        padding: 2rem;
-    }
-    .text-center.center form p label{
-        font-weight: 500;
-    }
-    .text-center.center form p input{
-        border: solid 2px;
-        border-radius: 20px;
-    }
-</style>
+
 {% endblock body %}

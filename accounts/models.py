@@ -9,8 +9,8 @@ User = get_user_model()
 class Account(BaseModel):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE) # Deletes profile if user is deleted
-    occupation = models.CharField(_(""), max_length=140, blank=True, null=True)
-    birthday = models.DateField(_(""), auto_now=False, auto_now_add=False, blank=True, null=True)
+    occupation = models.CharField(_("Occupation"), max_length=140, blank=True, null=True)
+    birthday = models.DateField(_("Birthday"), auto_now=False, auto_now_add=False, blank=True, null=True)
 
     class Meta:
         verbose_name = _("account")

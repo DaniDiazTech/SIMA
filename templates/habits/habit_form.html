@@ -1,48 +1,61 @@
 {% extends 'base.html' %}
 
-{% block title %}Edit Habit {{habit.name}} {% endblock title %}
+{% block title %}Editar Habito {{habit.name}} {% endblock title %}
 
 {% block body %}
-<div  
-style="border: solid; border-radius: 10px; width: 100%; height: unset; margin-top: 10px; background-color: #f3f3f3;">
-        <h1 style="text-align: center;margin-left: 10px;">Edición del habito {{habit.name}} </h1>
-        <form action="#" method="post" style="text-align: start; width: 70%;margin-left: 25%;">
-            {% csrf_token %}
-            
-            <label>Nombre del Hábito:</label><br>
-            <input 
-            placeholder="Ingrese el nombre del habito, minimo de 3 caracteres" 
-            minlength="3" 
-            type="text" 
-            id="fname" 
-            name="name" 
-            style="min-width: 100; width: inherit; background-color: #eef9fa;">
-            <br>
-            <br>
-            
-            <label>En que consiste el hábito:</label><br>
-            <textarea 
-            id="Descripcion" 
-            name="description"
-            placeholder="Ingrese la descripción del habito, minimo de 3 caracteres" 
-            minlength="3" 
-            type="text" 
-            id="Descripcion" 
-            style="  width: inherit; height: 100px;display: inline; vertical-align:  top; background-color: #eef9fa;" 
-            ></textarea>
-            
-            <br>
-            <br>
-            
-            <button class="btn" 
-            type="submit" 
-            style=" color: white; background-color: #457B9D;">Editar</button>
-            <a class="btn" href="{% url 'habits:home' %}" 
-        style=" border-radius: 5px; color: aliceblue; background-color: #1D3557;" > Cancelar </a>
-            <br>
-            <br>
-        </form>
-    </div>
+<div class="container">
+    <div  
+    style="border: solid; border-radius: 10px; margin-top: 10px; background-color: #f3f3f3;" class ="mx-5">
+            <h1 style="text-align: center;margin-left: 10px;" class="my-3"> Edita el habito </h1>
+            <form action="#" method="post" class="form-group text-center mx-5">
+                {% csrf_token %}
+                
+                <label>Nombre del Hábito:</label><br>
+                <input 
+                placeholder="Ingrese el nombre del habito, minimo de 3 caracteres" 
+                class="form-control"
+                minlength="3" 
+                type="text" 
+                id="fname" 
+                name="name" 
+                style="">
+                <br>
+                <br>
+                
+                <label>En que consiste el hábito:</label><br>
+                <textarea 
+                id="Descripcion" 
+                name="description"
+                placeholder="Ingrese la descripción del habito, minimo de 3 caracteres" 
+                minlength="3" 
+                type="text" 
+                id="Descripcion" 
+                style="" 
+                class="form-control"
+                ></textarea>
+                
+                <br>
+                <br>
 
+                <div class="container mx-auto mx-5" style="">
+                    <div class="mx-5">
+                        <div class="mx-5">
+                        <div class="mx-5">
+                            <div class="mx-5">
+                                <button class="btn" 
+                                type="submit" 
+                                style=" color: white; background-color: #457B9D;">Editar</button>
+                                <a class="btn" href="{% url 'habits:home' %}" 
+                            style=" border-radius: 5px; color: aliceblue; background-color: #1D3557;" > Cancelar </a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
 
+                </div>
+                <br>
+                <br>
+            </form>
+        </div>
+</div>
 {% endblock body %}
