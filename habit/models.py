@@ -5,20 +5,17 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 from django.conf.global_settings import LANGUAGE_CODE, TIME_ZONE
+from utils.models import BaseModel
 
 
 User = get_user_model()
 
 # Create your models here.
-class Habit(models.Model):
+class Habit(BaseModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     name = models.CharField(max_length=100)
     description = models.TextField()
-
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-
 
     class Meta:
         ordering = ['-created']

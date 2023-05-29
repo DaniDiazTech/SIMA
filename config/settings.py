@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'goals',
     'accounts', 
     'habit',
+    'utils',
 ]
 
 MIDDLEWARE = [
