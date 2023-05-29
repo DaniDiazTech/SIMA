@@ -6,10 +6,14 @@
 body{
     font-family: 'Poiret One', cursive;
     overflow: hidden;
-    background-image: url('bambooBackground.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+}
+
+.bg{
+    position: fixed;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
 }
 
 .container{

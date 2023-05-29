@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,12 +14,15 @@
       crossorigin="anonymous"
     />
 
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "style.css" %}">
+
+
     {% comment %} Full Calendar {% endcomment %}
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.11.3/main.min.css,npm/fullcalendar@5.11.3/main.min.css"
     />
-
     <title>{% block title %}{% endblock title %} - Home</title>
   </head>
   <body>

@@ -1,54 +1,52 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Entra{% endblock title %}
+{% block title %}Iniciar Sesión{% endblock title %}
 
 
 {% block navbar %}
 {% endblock navbar %}
 
 {% block body %}
-<div class="center text-center my-4">
-    <h1> Bienvenido a Habit tracker! Registra de la mejor manera tus hábitos.</h1>
-    <h3 style="text-align: center;">Ingresa con tu usuario y contraseña</h3>
-    <form action="#" method="POST" style="align-items: center;">
-        {% csrf_token %}
-        {% if form.errors %}
-        <p>Por favor, intenta de nuevo</p>
-        {% endif %}
-        {{form.as_p}}
-        <div class="my-3">
-            <button class="btn" type="submit" style="background-color: #457B9D; color: white;">Ingresar</button>
-        </div>
-    </form>
-    <div class="text-center my-3">
-        <p>No tienes una cuenta? <a href="{% url 'accounts:signup' %}" class="link link-danger" >Registrate</a></p>
+<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+<img class="bg" src="{% static "bambooBackground.png" %}">
+<div class="container">
+    <div class="img">
+        <img src={% static "panda.png" %} alt="Panda bg">
+    </div>
+    <div class="login-container">
+        <form action="#" method="POST">
+            {% csrf_token %}
+            <img src={% static "panda2.png" %} alt="Panda avatar">
+            <h2>Bienvenido a SIMA</h2>
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="div">
+                    <h5>Usuario</h5>
+                    <input class="input" type="text">
+                </div>
+            </div>
+            <div class="input-div two">
+                <div class="i">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="div">
+                    <h5>Contraseña</h5>
+                    <input class="input" type="password">
+                </div>
+            </div>
+            {% if form.errors %}
+            <p>Por favor, intenta de nuevo</p>
+            {% endif %}
+            {% comment %} {{form.as_p}} {% endcomment %}
+            <a href="#">¿Olvidaste tu contraseña?</a>
+            <div class="text-center my-3">
+            <p>No tienes una cuenta? <a href="{% url 'accounts:signup' %}" class="link link-danger" >Registrate</a></p>
+            </div>
+            <input type="submit" class="btn" value="Iniciar sesión">
+        </form>
     </div>
 </div>
-<style type="text/css">
-    .container{
-        padding-top: 5rem;
-    }
-    .center.text-center.my-4 {
-        border: solid;
-        border-radius: 10px;
-    }
-    .center.text-center.my-4 h1{
-        padding: 1rem 1rem;
-    }
-    center.text-center.my-4 h3{
-        color: #42379d;
-    }
-    center.text-center.my-4 form {
-        padding-top: 2rem;
-    }
-    form > p > label{
-        font-weight: 500;
-    }
-    form > p > input {
-        border: solid 2px;
-        border-radius: 5px;
-    }
-
-</style>
 {% endblock body %}
