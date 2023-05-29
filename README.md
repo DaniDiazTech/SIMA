@@ -1,30 +1,14 @@
-# Habit tracker in Django
-Habit tracker app with Calendar made with Django.
+# SIMA
 
-Home:
-![Home](screenshots/home.png)
+La app que te ayuda a manejar tu tiempo!
 
-Gym habit:
-![Gym](screenshots/gym.png)
-
-Create habit:
-![Create](screenshots/create-habit.png)
+Login Screen:
+![Home](screenshots/login.jpeg)
 
 To clone and run the project:
 ```bash
-git clone git@github.com:DaniDiazTech/Habit-tracker.git
-cd Habit-tracker
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
-```
-
-To run the project:
-
-```bash
-django-admin startproject --template=https://github.com/momentumlearn/django-project-template/archive/main.zip --name=Pipfile project .
+git clone git@github.com:DaniDiazTech/SIMA.git
+cd SIMA
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
