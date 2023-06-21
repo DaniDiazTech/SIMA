@@ -7,6 +7,8 @@ urlpatterns = [
     # User, all the habits in the current day
     path('', HomeView.as_view(), name="home"),
 
+    path('pomodoro/', PomodoroView.as_view(), name="pomodoro"), # pomodoro -> url a llamar desde template
+
     # Calendar view
     path('<int:pk>/', CalendarView.as_view(), name="calendar"),
 

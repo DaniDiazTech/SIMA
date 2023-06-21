@@ -15,6 +15,11 @@
             href="{% url 'habits:create' %}"
             >Crear Habito</a
           >
+          <a
+            aria-current="page"
+            href="{% url 'habits:pomodoro' %}"
+            >Pomodoro</a
+          >
 
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -24,7 +29,15 @@
             class="nav-link active"
             aria-current="page"
             href="{% url 'habits:create' %}"
-            >Crear Habito</a
+            >Crear Habito 🔥</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="{% url 'habits:pomodoro' %}"
+            >Pomodoro 🍅</a
           >
         </li>
       </ul>
