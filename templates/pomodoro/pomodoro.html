@@ -37,6 +37,8 @@
 
 .clock-container img{
     width: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 #clock{
@@ -101,7 +103,7 @@ input{
     justify-content: space-around;
     padding-bottom: 20px;
 }
-@media screen and (max-width: 500px){
+@media screen and (max-width: 575px){
     .row-container{
         display: flex;
         flex-direction: column;
@@ -109,6 +111,12 @@ input{
 
     .clock-container{
         align-items: center;
+    }
+}
+@media screen and (max-width: 720px){
+    .clock-container img{
+        margin-left: 0px;
+        margin-right: 0px;
     }
 }
 }
