@@ -27,16 +27,13 @@ class SignUpView(CreateView):
         return to_return
 
     def send_welcome_email(self, user):
-        try:
-            msg= EmailMessage(
-                f"{user.get_username().capitalize()} Te has registrado en SIMA!",
-                f"""<h1> Hola {user.fist_name} {user.last_name}! <h1/> <p>Te has registrado en SIMA estamos contentos por ello<p>
-                <p>Ya puedes comenzar a usar todas las funcionalidades de SIMA</p>
-                """,
-                settings.EMAIL_HOST_USER,
-                [user.email]
-            )
-            msg.content_subtype = "html"
-            msg.send()
-        except:
-            pass
+        msg= EmailMessage(
+            f"{user.get_username().capitalize()} Te has registrado en SIMA!",
+            f"""<h1> Hola {user.first_name} {user.last_name}! <h1/> <p>Te has registrado en SIMA estamos contentos por ello<p>
+            <p>Ya puedes comenzar a usar todas las funcionalidades de SIMA</p>
+            """,
+            settings.EMAIL_HOST_USER,
+            [user.email]
+        )
+        msg.content_subtype = "html"
+        msg.send()
