@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Home{% endblock title %}
 
 
 {% block body %}
+<div class="container d-flex flex-column align-items-center flex-sm-row">
+<img class="" src="{% static "Pandita.png" %}" style="width:200px;height:300px; padding:25px; object-fit: cover;">
 <div class="container">
-{% comment %} Definitions {% endcomment %}
-{% now "d" as day %}
-{% now "l" as day_name %}
-{% now "F" as month %}
+    {% comment %} Definitions {% endcomment %}
+    {% now "d" as day %}
+    {% now "l" as day_name %}
+    {% now "F" as month %}
 <div class="my-3 center text-center">
     <h1 class="fw-bold">Hoy es {{day_name | capfirst}} {{day}} de {{month | capfirst}}</h1>
 </div>
@@ -67,6 +70,7 @@
         margin-top: -5%;
     }
 </style>
+</div>
 </div>
 {% endblock body %}
 
