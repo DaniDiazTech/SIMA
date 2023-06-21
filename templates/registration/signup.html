@@ -6,12 +6,12 @@
 {% block body %}
 <div class="container text-center center mx-auto ">
     <div class="container mx-auto px-5">
-        <h1 class="my-5 text-uppercase">Crea una cuenta</h1>
+        <h1 class="my-5 text-uppercase font-weight-bold">Crea una cuenta</h1>
         <form action="#" method="POST">
             {% csrf_token %}
             {{form.as_p}}
             <div class="my-3">
-                <button class="btn" type="submit" style="background-color: #457B9D; color: white;">Registrarse</button>
+                <button class="btn" type="submit" style="background-color: #457B92; color: white;">Registrarse</button>
             </div>
         </form>
         {% if form.errors %}

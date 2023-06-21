@@ -1,6 +1,6 @@
 body{
     font-family: 'Poiret One', cursive;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .bg{
@@ -162,7 +162,7 @@ body{
     color: #a5eea0;
 }
 
-.btn{
+.btn-login{
     display: block;
     width: 100%;
     height: 50px;
@@ -180,7 +180,7 @@ body{
     text-transform: uppercase;
 }
 
-.btn:hover{
+.btn-login:hover{
     background-position: right;
 }
 
