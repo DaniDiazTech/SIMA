@@ -14,11 +14,11 @@
 .pomodoro-container{
     display: flex;
     padding: 10px;
-    width: 50%;
+    width: 90%;
     flex-direction: column;
-    border: 3px solid #000000;
+    border: 2px solid white;
     border-radius: 30px;
-    background: #b7afafa6;
+    background: #f2ebd5;
     box-shadow: rgb(0, 0, 0) 0px 8px 24px;
 }
 
@@ -30,15 +30,22 @@
 
 .clock-container{
     padding-top: 20px;
-    justify-content: flex-end;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.clock-container img{
+    width: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 #clock{
-    width: 50%;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 70px;
+    font-size: 4em;
     color: #000000;
+    padding: 25px
 }
 
 .input-container{
@@ -52,7 +59,6 @@
 
 label{
     text-transform: uppercase;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
     color: #000000;
 }
@@ -61,10 +67,10 @@ input{
     padding: 5px;
     width: 80px;
     font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    border: none;
-    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 6px;
+    background-color: white;
 }
 
 .start-container{
@@ -76,7 +82,6 @@ input{
     margin-bottom: 40px;
     padding: 12px 14px;
     text-transform: uppercase;
-    font-family: Arial, Helvetica, sans-serif;
     color: #fff;
     font-size: 16px;
     font-weight: 500;
@@ -98,6 +103,23 @@ input{
     justify-content: space-around;
     padding-bottom: 20px;
 }
+@media screen and (max-width: 575px){
+    .row-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .clock-container{
+        align-items: center;
+    }
+}
+@media screen and (max-width: 720px){
+    .clock-container img{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+}
 </style>
 {% endblock custom %}
 
@@ -112,6 +134,8 @@ window.onload = () => {
     let timesCompleted; /* Tiempos completados */
     let cyclesGoal;
     let cyclesCompleted = 0;
+    let isStarted = false;
+    let timeout;
 
     /* Timer */
     let currentTime = 1; /* Minutos seteados */
@@ -127,7 +151,7 @@ window.onload = () => {
             }
             updateClock();
             console.log(currentTime, seconds);
-            setTimeout(timer, 1000);
+            timeout = setTimeout(timer, 1000);
         } else{
             pomodoroController();
         }
@@ -182,8 +206,18 @@ window.onload = () => {
     
     /* Button funtionality */
     startButton.onclick = () => {
+        isStarted = !isStarted;
+        startButton.innerHTML = isStarted?"Reiniciar":"Comenzar"
+        if(isStarted){
         populateVariables();
         startPomodoro();
+        }
+        else{
+            clock.innerHTML = "25:00"
+            clearTimeout(timeout)
+             currentTime = 1; /* Minutos seteados */
+     seconds = 0
+        }
     }
 
     function startPomodoro() {
@@ -231,7 +265,10 @@ window.onload = () => {
 <div class="d-flex justify-content-center flex-nowrap">
     <div class="pomodoro-container">
         <div class="row-container clock-container">
-            <h2 id="clock">25:00</h2>
+            <img src="https://cdn-icons-png.flaticon.com/512/3076/3076000.png">
+            <div class="container mx-auto">
+                <h2 id="clock">25:00</h2>
+            </div>
             <div class="input-container">
                 <label for="cycles-input">Ciclos de Pomodoro</label>
                 <input id="cycles-input" type="number" value="1"/>
