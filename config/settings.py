@@ -33,7 +33,7 @@ else:
 
 ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS += [config('ALLOWED_HOSTS', default="*")]
-CSRF_TRUSTED_ORIGINS = ['https://sima.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = ['https://sima.up.railway.app/', 'https://sima.up.railway.app']
 CSRF_TRUSTED_ORIGINS += [config("CRSF_TRUSTED_ORIGIN", default="")]
 
 # Application definition
