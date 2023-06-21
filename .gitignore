@@ -1,5 +1,5 @@
 .venv/
 *.pyc
 *sqlite3
-*.env/
-.env/
+*.env
+.env
