@@ -1,0 +1,261 @@
+{% extends 'base.html' %}
+
+{% block title %}Pomodoro{% endblock title %}
+
+{% block custom %}
+<style>
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: solid 1px #b7afaf00;
+}
+
+.pomodoro-container{
+    display: flex;
+    padding: 10px;
+    width: 50%;
+    flex-direction: column;
+    border: 3px solid #000000;
+    border-radius: 30px;
+    background: #b7afafa6;
+    box-shadow: rgb(0, 0, 0) 0px 8px 24px;
+}
+
+.row-container{
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+}
+
+.clock-container{
+    padding-top: 20px;
+    justify-content: flex-end;
+}
+
+#clock{
+    width: 50%;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 70px;
+    color: #000000;
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    text-align: center;
+}
+
+label{
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #000000;
+}
+
+input{
+    padding: 5px;
+    width: 80px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+}
+
+.start-container{
+    justify-content: center;
+}
+
+#start-button{
+    margin-top: 10px;
+    margin-bottom: 40px;
+    padding: 12px 14px;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 2px solid #9ae2ad;
+    border-radius: 6px;
+    background: #9ae2ad;
+    outline: 0;
+    box-shadow: rgba(0, 0, 0, 0.4) 1px 2px 4px;
+}
+
+#start-button:hover{
+    background-color: #fff;
+    font-weight: 600;
+    color: #9ae2ad;
+}
+
+.settings-container{
+    justify-content: space-around;
+    padding-bottom: 20px;
+}
+</style>
+{% endblock custom %}
+
+{% block scripts %}
+<script>
+
+window.onload = () => {
+    /* Pomodoro */
+    let workTime;
+    let breakTime;
+    let restTime;
+    let timesCompleted; /* Tiempos completados */
+    let cyclesGoal;
+    let cyclesCompleted = 0;
+
+    /* Timer */
+    let currentTime = 1; /* Minutos seteados */
+    let seconds = 0;
+
+    function timer(){
+        if(currentTime > 0 || seconds > 0){
+            if(seconds == 0){
+                seconds = 59;
+                currentTime--;
+            } else{
+                seconds--;
+            }
+            updateClock();
+            console.log(currentTime, seconds);
+            setTimeout(timer, 1000);
+        } else{
+            pomodoroController();
+        }
+    }
+
+    
+    function pomodoroController(){
+        if(isRestTime()){
+            cyclesCompleted++;
+            if(!goalReached()){
+                currentTime = restTime;
+                timer();
+                timesCompleted = 0;
+            } else{
+                console.log("Pomodoro Finished!");
+            }
+
+            return;
+        }
+        if(timesCompleted % 2 == 0){
+            currentTime = workTime;
+            timesCompleted++;
+            timer();
+            console.log("Time to Work! TC:" + timesCompleted);
+        } else{
+            currentTime = breakTime;
+            timesCompleted++;
+            timer();
+            console.log("Time to break! TC:" + timesCompleted);
+        }
+    }
+
+    function isRestTime(){
+        return timesCompleted == 7;
+    }
+
+    function goalReached(){
+        return cyclesGoal == cyclesGoal;
+    }
+
+
+
+    /* Frontend Connection */
+    let clock = document.getElementById("clock");
+    let cyclesInput = document.getElementById("cycles-input");
+    let startButton = document.getElementById("start-button");
+    let workTimeInput = document.getElementById("work-time");
+    let breakTimeInput = document.getElementById("break-time");
+    let restTimeInput = document.getElementById("rest-time");
+
+
+    
+    /* Button funtionality */
+    startButton.onclick = () => {
+        populateVariables();
+        startPomodoro();
+    }
+
+    function startPomodoro() {
+        console.log("started pomodoro");
+        pomodoroController();
+    }
+
+    function populateVariables(){
+        console.log("populate variables");
+        workTime = workTimeInput.value;   /* Minutos */
+        breakTime = breakTimeInput.value;   /* Minutos */
+        restTime = restTimeInput.value;    /* Minutos */
+        cyclesGoal = cyclesInput.value;    
+        timesCompleted = 0;
+    }
+
+
+
+    /* Clock */
+    let clockMinutes;
+    let clockSeconds;
+
+    function updateClock() {
+        clockMinutes = formatNumbers(currentTime);
+        clockSeconds = formatNumbers(seconds);
+        clock.innerHTML = clockMinutes + ":" + clockSeconds;
+    }
+
+    function formatNumbers(time){
+        let formattedDigits;
+        if(time < 10){
+            formattedDigits = "0" + time;
+        } else{
+            formattedDigits = time;
+        }
+
+        return formattedDigits;
+    }
+
+};
+</script>
+{% endblock scripts %}
+
+{% block body %}
+<div class="d-flex justify-content-center flex-nowrap">
+    <div class="pomodoro-container">
+        <div class="row-container clock-container">
+            <h2 id="clock">25:00</h2>
+            <div class="input-container">
+                <label for="cycles-input">Ciclos de Pomodoro</label>
+                <input id="cycles-input" type="number" value="1"/>
+            </div>
+        </div>
+        <div class="row-container start-container">
+            <button id="start-button">Comenzar</button>
+        </div>
+        <div class="row-container settings-container">
+            <div class="input-container">
+                <label for="work-time">Tiempo de trabajo</label>
+                <input id="work-time" type="text" value="25">
+                min
+            </div>
+            <div class="input-container">
+                <label for="break-time">Tiempo de descanso</label>
+                <input id="break-time" type="text" value="5">
+                min
+            </div>
+            <div class="input-container">
+                <label for="rest-time">Descanso largo</label>
+                <input id="rest-time" type="text" value="15"> min
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
