@@ -69,6 +69,9 @@ MIDDLEWARE = [
     # Custom
     # Django Reload
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    
+    # Whitenoise
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'config.urls'
