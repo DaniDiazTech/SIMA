@@ -7,6 +7,15 @@
 {% block navbar %}
 {% endblock navbar %}
 
+{% block custom %}
+<style>
+    body{
+        font-family: 'Poiret One', cursive;
+        overflow:hidden;
+    }
+</style>
+{% endblock custom %}
+
 {% block body %}
 <script src="https://kit.fontawesome.com/a81368914c.js"></script>
 <div id="leaves">
@@ -27,8 +36,8 @@
     <i></i>
 </div>
 <img class="bg" src="{% static "bambooBackground.png" %}">
-<div class="containerl">
-    <div class="img">
+<div class="container1">
+    <div class="img-login">
         <img src={% static "panda.png" %} alt="Panda bg">
     </div>
     <div class="login-container">
@@ -37,7 +46,7 @@
             <img src={% static "panda2.png" %} alt="Panda avatar">
             <h2>Bienvenido a SIMA</h2>
             <div class="input-div one">
-                <div class="i">
+                <div class="i1">
                     <i class="fas fa-user"></i>
                 </div>
                 <div class="div">
@@ -48,7 +57,7 @@
                 </div>
             </div>
             <div class="input-div two">
-                <div class="i">
+                <div class="i1">
                     <i class="fas fa-lock"></i>
                 </div>
                 <div class="div">
@@ -65,7 +74,7 @@
             <div class="text-center my-3">
             <p>No tienes una cuenta? <a href="{% url 'accounts:signup' %}" class="a-login" >Registrate</a></p>
             </div>
-            <input type="submit" class="btn" value="Iniciar sesión">
+            <input type="submit" class="btn-login" value="Iniciar sesión">
         </form>
     </div>
 </div>

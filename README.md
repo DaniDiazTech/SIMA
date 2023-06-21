@@ -15,3 +15,5 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 ```
+
+Put the .env file inside the config/ folder

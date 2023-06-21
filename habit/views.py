@@ -3,7 +3,7 @@ from pytz import timezone
 
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, View, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, View, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.shortcuts import get_object_or_404, get_list_or_404
@@ -81,3 +81,6 @@ class HabitDeleteView(LoginRequiredMixin, DeleteView):
     model = Habit
     template_name = 'confirm_delete.html'
     success_url = reverse_lazy('habits:home')
+
+class PomodoroView(TemplateView):
+    template_name = "pomodoro/pomodoro.html"
